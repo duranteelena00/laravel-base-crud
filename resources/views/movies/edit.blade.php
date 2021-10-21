@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Create your Movie</title>
+    <title>Edit the movie</title>
     <style>
         label {
             margin: 30px 0 5px 0;
@@ -17,7 +17,8 @@
     </style>
 </head>
 <body>
-    <form method='POST' action="{{ route('movies.store') }}">
+    <form method='POST' action="{{ route('movies.update', $movie) }}">
+        @method('PATCH')
         @csrf
         <label for="title">Title</label>
         <input type="text" name='title' id='title'>
@@ -33,7 +34,7 @@
         <textarea name="overview" id="overview" cols="30" rows="10"></textarea>
         <label for="poster_path">Poster path</label>
         <textarea name="poster_path" id="poster_path" cols="30" rows="6"></textarea>
-        <button type="submit">Create</button>
+        <button type="submit">Edit</button>
     </form>
 </body>
 </html>

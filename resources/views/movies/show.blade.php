@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,6 +22,10 @@
             <div style="margin-top: 40px">
                 <p>overview: <em>"{{ $movie->overview }}"</em></p>
             </div>
+            <a href="{{ route('movies.edit', $movie->id) }}">Edit</a>
+            <form action="">
+                <a href="{{ route('movies.destroy', $movie->id) }}">Delete</a>
+            </form>
         </div>
     </div>
     <script src="{{ asset('js/app.js') }}"></script>
