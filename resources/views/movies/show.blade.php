@@ -23,8 +23,10 @@
                 <p>overview: <em>"{{ $movie->overview }}"</em></p>
             </div>
             <a href="{{ route('movies.edit', $movie->id) }}">Edit</a>
-            <form action="">
-                <a href="{{ route('movies.destroy', $movie->id) }}">Delete</a>
+            <form method="POST" action="{{ route('movies.destroy', $movie->id) }}">
+                @csrf
+                @method('DELETE')
+                <button type="submit">Delete</button>
             </form>
         </div>
     </div>

@@ -99,6 +99,7 @@ class MovieController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Movie::destroy($id);
+        return redirect()->route('movies.index');
     }
 }
