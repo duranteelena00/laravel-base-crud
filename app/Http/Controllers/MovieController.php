@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Movie;
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -37,6 +38,19 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
+
+        //* VALIDATION
+        $request->validate([
+            'title' => 'required|string|unique:movies|max:100',
+            'original_title' => 'nullable|string|unique:movies|max:100',
+            'nationality' => 'nullable|string|max:20',
+            'vote' => 'nullable|numeric|max:2,1',
+            'date' => 'required|date',
+            'overview' => 'required|string',
+            'created_at' => 'date',
+            'updated_at' => 'date'
+        ]);
+
         // VERSIONE MANUALE
         /* $movie->title = $data['title'];
         $movie->overview = $data['overview']; 
@@ -60,6 +74,7 @@ class MovieController extends Controller
      */
     public function show(Movie $movie)
     {
+        $movie->created_at = Carbon::create($movie->created_at)->format('d/m/Y');
         return view('movies.show', compact('movie'));
     }
 

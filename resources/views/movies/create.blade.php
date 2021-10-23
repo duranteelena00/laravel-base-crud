@@ -19,6 +19,13 @@
 <body>
     <form method='POST' action="{{ route('movies.store') }}">
         @csrf
+        @if ($errors->any())
+            <ul style="padding: 10px 0 10px 25px ; background-color: rgb(246, 183, 193); border-radius: 10px; color: rgb(134, 0, 22); border: 1px solid rgb(134, 0, 22)">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
         <label for="title">Title</label>
         <input type="text" name='title' id='title'>
         <label for="original_title">Original title</label>

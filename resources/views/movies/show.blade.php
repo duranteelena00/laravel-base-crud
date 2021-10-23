@@ -22,7 +22,9 @@
             <div style="margin-top: 40px">
                 <p>overview: <em>"{{ $movie->overview }}"</em></p>
             </div>
-            <a href="{{ route('movies.edit', $movie->id) }}">Edit</a>
+            <p style="margin: 40px 0 30px 0" ><small>created at: {{ $movie->getCreatedAt() }}</small><br>
+            <small>updated at: {{ $movie->getUpdatedAt() }}</small></p>
+            <button style="margin-bottom: 5px"><a href="{{ route('movies.edit', $movie->id) }}" style="color: currentColor; text-decoration: none">Edit</a></button>
             <form method="POST" action="{{ route('movies.destroy', $movie->id) }}">
                 @csrf
                 @method('DELETE')
